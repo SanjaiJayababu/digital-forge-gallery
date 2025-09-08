@@ -8,35 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cyberpunk color palette */
+    --background: 220 20% 8%;
+    --foreground: 210 100% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 20% 10%;
+    --card-foreground: 210 100% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 100% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 20% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 280 100% 70%;
+    --secondary-foreground: 220 20% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 210 20% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 220 20% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 195 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    
+    /* Custom cyberpunk variables */
+    --cyber-blue: 195 100% 50%;
+    --cyber-purple: 280 100% 70%;
+    --cyber-green: 120 100% 50%;
+    --cyber-pink: 320 100% 70%;
+    
+    /* Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--cyber-blue)), hsl(var(--cyber-purple)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(220 20% 12%));
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--cyber-blue) / 0.3), transparent 70%);
+    
+    /* Shadows and glows */
+    --glow-cyber: 0 0 20px hsl(var(--cyber-blue) / 0.5);
+    --glow-purple: 0 0 20px hsl(var(--cyber-purple) / 0.5);
+    --glow-green: 0 0 20px hsl(var(--cyber-green) / 0.5);
+    
+    /* Animation durations */
+    --transition-fast: 0.2s ease-out;
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +123,62 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Cyberpunk effects */
+  .glow-cyber {
+    box-shadow: var(--glow-cyber);
+  }
+  
+  .glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+  
+  .glow-green {
+    box-shadow: var(--glow-green);
+  }
+  
+  .gradient-cyber {
+    background: var(--gradient-cyber);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+  
+  /* Text effects */
+  .text-cyber-blue {
+    color: hsl(var(--cyber-blue));
+  }
+  
+  .text-cyber-purple {
+    color: hsl(var(--cyber-purple));
+  }
+  
+  .text-cyber-green {
+    color: hsl(var(--cyber-green));
+  }
+  
+  /* Hover animations */
+  .hover-glow-cyber {
+    transition: box-shadow var(--transition-smooth);
+  }
+  
+  .hover-glow-cyber:hover {
+    box-shadow: var(--glow-cyber);
+  }
+  
+  .hover-lift {
+    transition: transform var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
   }
 }
